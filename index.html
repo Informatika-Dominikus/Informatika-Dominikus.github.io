@@ -1,11 +1,1168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Literasi Digital - SMA Negeri 1 Karangmojo</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #27ae60;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background-color: #c0392b;
+        }
+        
+        .progress-container {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            height: 10px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--secondary);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .scenario-card {
+            border-left: 4px solid var(--accent);
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .option {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        
+        .option.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        .feedback {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .tab-container {
+            margin: 2rem 0;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--shadow);
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 0.8rem 2rem;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Pak Bowo Dominikus</h1>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">💻</div>
+                <div>
+                    <h1>Literasi Digital</h1>
+                    <p class="subtitle">SMA Negeri 1 Karangmojo - Tahun Pelajaran 2025/2026</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">INFORMATIKA KELAS X</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Beranda</a></li>
+                <li><a href="#materi">Materi</a></li>
+                <li><a href="#aktivitas">Aktivitas</a></li>
+                <li><a href="#scenario">Simulasi</a></li>
+                <li><a href="#asesmen">Asesmen</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section id="home" class="section">
+            <div class="card">
+                <h2 class="card-title"><i>📚</i> Selamat Datang di Modul Literasi Digital</h2>
+                <p>Modul ini dirancang untuk membantu Anda memahami dan menerapkan literasi digital yang aman, etis, dan bertanggung jawab. Anda akan belajar menganalisis risiko dan merumuskan solusi bijak dalam memanfaatkan teknologi dan media digital.</p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+                </div>
+                <p>Progress Belajar: <span id="progress-text">0%</span></p>
+                
+                <div style="margin-top: 1.5rem;">
+                    <a href="#materi" class="btn">Mulai Belajar</a>
+                    <a href="#aktivitas" class="btn btn-secondary">Lihat Aktivitas</a>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title"><i>🎯</i> Tujuan Pembelajaran</h3>
+                    <ul>
+                        <li>Menjelaskan pentingnya manfaat literasi digital</li>
+                        <li>Menganalisis berbagai ancaman keamanan digital</li>
+                        <li>Mempraktikkan langkah-langkah dasar untuk menjaga keamanan digital</li>
+                        <li>Mengevaluasi informasi yang boleh dan tidak boleh dibagikan di ruang digital</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title"><i>⏱️</i> Informasi Modul</h3>
+                    <p><strong>Mata Pelajaran:</strong> Informatika</p>
+                    <p><strong>Kelas/Semester:</strong> X/Gasal</p>
+                    <p><strong>Alokasi Waktu:</strong> 2 x 45 menit (1 pertemuan)</p>
+                    <p><strong>Guru Pengampu:</strong> Aryanto, S.Kom</p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title"><i>📋</i> Elemen Pembelajaran</h3>
+                    <ul>
+                        <li>Hoax dan Misinformasi</li>
+                        <li>Cyberbullying</li>
+                        <li>Penipuan Online (Phishing)</li>
+                        <li>Etika Digital</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="materi" class="section">
+            <h2 class="section-title">Materi Pembelajaran</h2>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="hoax">Hoax</div>
+                    <div class="tab" data-tab="cyberbullying">Cyberbullying</div>
+                    <div class="tab" data-tab="phishing">Phishing</div>
+                    <div class="tab" data-tab="etika">Etika Digital</div>
+                </div>
+                
+                <div class="tab-content active" id="hoax-content">
+                    <div class="card">
+                        <h3 class="card-title"><i>⚠️</i> Memahami Hoax dan Misinformasi</h3>
+                        <p>Hoax adalah informasi yang sengaja dibuat untuk menyesatkan atau membohongi pembaca. Misinformasi adalah informasi yang salah tetapi tidak selalu disebarkan dengan niat jahat.</p>
+                        
+                        <h4>Ciri-ciri Hoax:</h4>
+                        <ul>
+                            <li>Sumber informasi tidak jelas</li>
+                            <li>Menggunakan judul sensasional</li>
+                            <li>Berisi konten yang memprovokasi emosi</li>
+                            <li>Tidak ada tanggal atau waktu yang jelas</li>
+                            <li>Menyebar dengan cepat melalui media sosial</li>
+                        </ul>
+                        
+                        <h4>Cara Menghadapi Hoax:</h4>
+                        <ul>
+                            <li>Verifikasi informasi dari sumber terpercaya</li>
+                            <li>Periksa fakta melalui situs pemeriksa fakta</li>
+                            <li>Jangan langsung membagikan informasi yang belum terverifikasi</li>
+                            <li>Laporkan konten hoax ke platform media sosial</li>
+                        </ul>
+                        
+                        <div class="btn-container" style="margin-top: 1.5rem;">
+                            <button class="btn mark-complete" data-section="hoax">Tandai Sudah Dipelajari</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="cyberbullying-content">
+                    <div class="card">
+                        <h3 class="card-title"><i>🚫</i> Mengenal Cyberbullying</h3>
+                        <p>Cyberbullying adalah perilaku agresif yang dilakukan melalui media digital dengan tujuan menyakiti, mengancam, atau mempermalukan seseorang.</p>
+                        
+                        <h4>Bentuk-bentuk Cyberbullying:</h4>
+                        <ul>
+                            <li>Mengirim pesan ancaman atau intimidasi</li>
+                            <li>Menyebarkan rumor atau gosip</li>
+                            <li>Membuat akun palsu untuk mengolok-olok seseorang</li>
+                            <li>Mengunggah foto atau video memalukan tanpa izin</li>
+                            <li>Mengucilkan seseorang dari grup online</li>
+                        </ul>
+                        
+                        <h4>Dampak Cyberbullying:</h4>
+                        <ul>
+                            <li>Gangguan mental seperti depresi dan kecemasan</li>
+                            <li>Penurunan prestasi akademik</li>
+                            <li>Isolasi sosial</li>
+                            <li>Dalam kasus ekstrem, dapat menyebabkan bunuh diri</li>
+                        </ul>
+                        
+                        <h4>Cara Menghadapi Cyberbullying:</h4>
+                        <ul>
+                            <li>Jangan membalas pesan dari pelaku</li>
+                            <li>Blokir akun pelaku</li>
+                            <li>Simpan bukti cyberbullying</li>
+                            <li>Laporkan ke platform media sosial</li>
+                            <li>Ceritakan kepada orang dewasa yang dipercaya</li>
+                        </ul>
+                        
+                        <div class="btn-container" style="margin-top: 1.5rem;">
+                            <button class="btn mark-complete" data-section="cyberbullying">Tandai Sudah Dipelajari</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="phishing-content">
+                    <div class="card">
+                        <h3 class="card-title"><i>🎣</i> Waspada Penipuan Phishing</h3>
+                        <p>Phishing adalah upaya penipuan untuk mendapatkan informasi sensitif seperti kata sandi, nomor kartu kredit, atau data pribadi dengan menyamar sebagai entitas yang terpercaya.</p>
+                        
+                        <h4>Ciri-ciri Email/SMS Phishing:</h4>
+                        <ul>
+                            <li>Pengirim menggunakan nama yang mirip dengan perusahaan resmi</li>
+                            <li>Meminta informasi pribadi atau finansial</li>
+                            <li>Mengandung tautan yang mencurigakan</li>
+                            <li>Ada rasa urgensi atau ancaman jika tidak segera ditanggapi</li>
+                            <li>Terdapat kesalahan tata bahasa atau ejaan</li>
+                        </ul>
+                        
+                        <h4>Cara Melindungi Diri dari Phishing:</h4>
+                        <ul>
+                            <li>Jangan klik tautan dalam email atau SMS mencurigakan</li>
+                            <li>Periksa alamat email pengirim dengan teliti</li>
+                            <li>Gunakan autentikasi dua faktor</li>
+                            <li>Perbarui perangkat lunak secara berkala</li>
+                            <li>Gunakan kata sandi yang kuat dan berbeda untuk setiap akun</li>
+                        </ul>
+                        
+                        <div class="btn-container" style="margin-top: 1.5rem;">
+                            <button class="btn mark-complete" data-section="phishing">Tandai Sudah Dipelajari</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="etika-content">
+                    <div class="card">
+                        <h3 class="card-title"><i>🤝</i> Etika dalam Berinteraksi Digital</h3>
+                        <p>Etika digital adalah prinsip moral yang mengatur perilaku kita dalam menggunakan teknologi dan berinteraksi di ruang digital.</p>
+                        
+                        <h4>Prinsip Etika Digital:</h4>
+                        <ul>
+                            <li><strong>Hormati Privasi Orang Lain:</strong> Jangan membagikan informasi pribadi orang lain tanpa izin</li>
+                            <li><strong>Berkomunikasi dengan Santun:</strong> Gunakan bahasa yang sopan dan hindari kata-kata kasar</li>
+                            <li><strong>Hargai Hak Cipta:</strong> Jangan menyalin atau membagikan karya orang lain tanpa izin</li>
+                            <li><strong>Bertanggung Jawab atas Konten:</strong> Pikirkan konsekuensi sebelum membagikan konten</li>
+                            <li><strong>Jadilah Warga Digital yang Baik:</strong> Laporkan konten yang melanggar aturan dan bantu ciptakan lingkungan digital yang aman</li>
+                        </ul>
+                        
+                        <h4>Tips Beretika di Media Sosial:</h4>
+                        <ul>
+                            <li>Pikirkan sebelum memposting: Apakah konten ini bermanfaat? Apakah bisa menyakiti perasaan orang lain?</li>
+                            <li>Jangan menyebarkan informasi yang belum diverifikasi</li>
+                            <li>Hargai perbedaan pendapat dalam diskusi online</li>
+                            <li>Gunakan pengaturan privasi untuk melindungi informasi pribadi</li>
+                        </ul>
+                        
+                        <div class="btn-container" style="margin-top: 1.5rem;">
+                            <button class="btn mark-complete" data-section="etika">Tandai Sudah Dipelajari</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="aktivitas" class="section">
+            <h2 class="section-title">Aktivitas Pembelajaran</h2>
+            
+            <div class="card">
+                <h3 class="card-title"><i>👥</i> Diskusi Kelompok</h3>
+                <p>Berdasarkan materi yang telah dipelajari, bentuk kelompok dengan 5-6 anggota dan lakukan diskusi tentang salah satu topik berikut:</p>
+                
+                <ul>
+                    <li>Analisis kasus hoax yang pernah viral dan dampaknya terhadap masyarakat</li>
+                    <li>Studi kasus cyberbullying di lingkungan sekolah dan solusi untuk mencegahnya</li>
+                    <li>Identifikasi teknik phishing yang sering digunakan dan cara melindungi diri</li>
+                    <li>Rancang panduan etika digital untuk siswa SMA</li>
+                </ul>
+                
+                <p><strong>Langkah-langkah:</strong></p>
+                <ol>
+                    <li>Pilih satu topik yang akan dianalisis</li>
+                    <li>Kumpulkan informasi dan data pendukung</li>
+                    <li>Diskusikan dalam kelompok dan buat kesimpulan</li>
+                    <li>Rancang solusi inovatif (kampanye digital/panduan) untuk mengatasi masalah</li>
+                    <li>Presentasikan hasil diskusi di depan kelas</li>
+                </ol>
+                
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn" id="download-guide">Unduh Panduan Diskusi</button>
+                    <button class="btn btn-secondary" id="submit-discussion">Kirim Hasil Diskusi</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i>📊</i> Presentasi Kelompok</h3>
+                <p>Setelah diskusi, setiap kelompok akan mempresentasikan hasil analisis dan solusi yang telah dirancang.</p>
+                
+                <h4>Kriteria Penilaian Presentasi:</h4>
+                <ul>
+                    <li>Kedalaman analisis masalah (30%)</li>
+                    <li>Kreativitas solusi yang ditawarkan (30%)</li>
+                    <li>Kemampuan presentasi (20%)</li>
+                    <li>Interaksi dengan audiens (10%)</li>
+                    <li>Pengelolaan waktu (10%)</li>
+                </ul>
+                
+                <div class="btn-container" style="margin-top: 1.5rem;">
+                    <button class="btn" id="view-rubric">Lihat Rubrik Penilaian</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="scenario" class="section">
+            <h2 class="section-title">Simulasi Kasus Digital</h2>
+            
+            <div class="card">
+                <h3 class="card-title"><i>🔍</i> Identifikasi Masalah Digital</h3>
+                <p>Uji pemahaman Anda dengan menganalisis situasi digital berikut dan pilih tindakan yang tepat.</p>
+                
+                <div id="scenario-container">
+                    <!-- Scenario content will be loaded here by JavaScript -->
+                </div>
+                
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <button class="btn" id="next-scenario">Kasus Berikutnya</button>
+                    <button class="btn btn-secondary" id="reset-scenarios">Mulai Ulang</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="asesmen" class="section">
+            <h2 class="section-title">Asesmen Pembelajaran</h2>
+            
+            <div class="card">
+                <h3 class="card-title"><i>📝</i> Tes Pemahaman</h3>
+                <p>Jawab pertanyaan berikut untuk mengukur pemahaman Anda tentang literasi digital.</p>
+                
+                <div id="quiz-container">
+                    <!-- Quiz content will be loaded here by JavaScript -->
+                </div>
+                
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <button class="btn" id="submit-quiz">Kirim Jawaban</button>
+                    <button class="btn btn-secondary" id="reset-quiz">Ulangi Quiz</button>
+                </div>
+                
+                <div id="quiz-result" class="hidden" style="margin-top: 1.5rem; text-align: center;">
+                    <h4>Hasil Quiz</h4>
+                    <p id="score-text">Skor Anda: 0/0</p>
+                    <p id="feedback-text"></p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i>📋</i> Refleksi Individu</h3>
+                <p>Jawab pertanyaan refleksi berikut untuk mengevaluasi pembelajaran Anda:</p>
+                
+                <form id="reflection-form">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="reflection1">1. Apa hal baru yang paling penting yang saya pelajari tentang Etika Digital dan bagaimana hal itu mengubah pandangan saya tentang media sosial?</label>
+                        <textarea id="reflection1" rows="3" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="reflection2">2. Setelah mempelajari kasus-kasus hari ini, perilaku digital spesifik apa yang akan saya ubah atau tingkatkan mulai sekarang?</label>
+                        <textarea id="reflection2" rows="3" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="reflection3">3. Bagaimana Literasi Digital membantu saya untuk menjadi warga negara digital yang lebih bertanggung jawab di masa depan?</label>
+                        <textarea id="reflection3" rows="3" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">Kirim Refleksi</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        <section id="tentang" class="section">
+            <h2 class="section-title">Tentang Modul</h2>
+            
+            <div class="card">
+                <h3 class="card-title"><i>ℹ️</i> Informasi Pengembang</h3>
+                <p><strong>Nama Penyusun:</strong> Aryanto, S.Kom</p>
+                <p><strong>Sekolah:</strong> SMA Negeri 1 Karangmojo</p>
+                <p><strong>Mata Pelajaran:</strong> Informatika</p>
+                <p><strong>Tahun Pelajaran:</strong> 2025/2026</p>
+                <p><strong>Fase/Kelas/Semester:</strong> E/X/Gasal</p>
+                <p><strong>Materi Pokok:</strong> Literasi Digital (Menerapkan Literasi Digital yang Aman)</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i>🎓</i> Profil Lulusan</h3>
+                <p>Berdasarkan tujuan pembelajaran dan karakteristik materi, dimensi profil lulusan yang akan dicapai adalah:</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h4>Keimanan dan Ketakwaan</h4>
+                        <p>Menjadi pribadi yang beriman dan bertakwa kepada Tuhan YME dalam menggunakan teknologi digital</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Kewargaan</h4>
+                        <p>Menjadi warga digital yang bertanggung jawab dan menghargai hak orang lain</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Penalaran Kritis</h4>
+                        <p>Mampu menganalisis informasi digital secara kritis dan mengambil keputusan yang tepat</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Kreativitas</h4>
+                        <p>Memanfaatkan teknologi digital untuk menciptakan konten yang positif dan bermanfaat</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Kolaborasi</h4>
+                        <p>Bekerja sama dalam tim untuk menyelesaikan masalah digital</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Komunikasi</h4>
+                        <p>Berkomunikasi secara efektif dan santun di ruang digital</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Kemandirian</h4>
+                        <p>Mampu belajar dan mengembangkan diri dalam literasi digital secara mandiri</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Kesehatan</h4>
+                        <p>Menjaga keseimbangan dalam penggunaan teknologi digital untuk kesehatan fisik dan mental</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 SMA Negeri 1 Karangmojo - Modul Literasi Digital</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="YouTube">📺</a>
+                    <a href="#" title="Website">🌐</a>
+                </div>
+                <p>Dikembangkan oleh Aryanto, S.Kom</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data for scenarios
+        const scenarios = [
+            {
+                id: 1,
+                title: "Kartu Situasi 1: Unggahan Foto di Grup Chat",
+                description: "Budi diunggah fotonya di grup chat kelas dengan tambahan stiker yang mengejek. Apakah ini termasuk cyberbullying?",
+                options: [
+                    { text: "Ya, ini termasuk cyberbullying karena foto Budi diedit dengan stiker mengejek tanpa persetujuannya", correct: true },
+                    { text: "Tidak, ini hanya bercanda antar teman", correct: false },
+                    { text: "Tidak, selama tidak ada kata-kata kasar", correct: false },
+                    { text: "Ya, tetapi hanya jika Budi merasa tersinggung", correct: false }
+                ],
+                feedback: {
+                    correct: "Benar! Mengunggah foto seseorang dengan editan yang mengejek tanpa persetujuan termasuk bentuk cyberbullying, meskipun dilakukan dalam konteks bercanda.",
+                    incorrect: "Salah. Mengunggah foto seseorang dengan editan yang mengejek tanpa persetujuan termasuk cyberbullying, terlepas dari niat pelaku."
+                }
+            },
+            {
+                id: 2,
+                title: "Kartu Situasi 2: Komentar Negatif di Instagram",
+                description: "Anda melihat teman Anda di-bully di kolom komentar Instagram. Apa dua tindakan langsung yang akan Anda lakukan?",
+                options: [
+                    { text: "Ikut mengomentari untuk membela teman Anda", correct: false },
+                    { text: "Melaporkan komentar tersebut ke platform Instagram", correct: true },
+                    { text: "Mengirim pesan pribadi kepada teman untuk menawarkan dukungan", correct: true },
+                    { text: "Mengabaikan karena bukan urusan Anda", correct: false },
+                    { text: "Menyimpan bukti screenshot komentar tersebut", correct: true },
+                    { text: "Membagikan postingan tersebut ke lebih banyak orang untuk mendapatkan perhatian", correct: false }
+                ],
+                multiSelect: true,
+                correctCount: 3,
+                feedback: {
+                    correct: "Benar! Tindakan yang tepat adalah melaporkan komentar ke platform, menawarkan dukungan kepada korban, dan menyimpan bukti. Ikut berkomentar atau membagikan postingan justru dapat memperburuk situasi.",
+                    incorrect: "Salah. Tindakan yang tepat adalah melaporkan komentar ke platform, menawarkan dukungan kepada korban, dan menyimpan bukti. Ikut berkomentar atau membagikan postingan justru dapat memperburuk situasi."
+                }
+            },
+            {
+                id: 3,
+                title: "Kartu Situasi 3: Dampak Cyberbullying",
+                description: "Selain korban, siapa lagi yang bisa terkena dampak negatif dari kasus cyberbullying?",
+                options: [
+                    { text: "Hanya korban langsung", correct: false },
+                    { text: "Korban, pelaku, dan saksi", correct: true },
+                    { text: "Korban dan keluarganya", correct: false },
+                    { text: "Korban, pelaku, saksi, keluarga, dan komunitas sekolah", correct: true }
+                ],
+                multiSelect: true,
+                correctCount: 2,
+                feedback: {
+                    correct: "Benar! Cyberbullying berdampak tidak hanya pada korban langsung, tetapi juga pada pelaku (dapat mengalami konsekuensi hukum dan sosial), saksi (dapat mengalami trauma atau rasa bersalah), keluarga, dan komunitas sekolah secara keseluruhan.",
+                    incorrect: "Salah. Cyberbullying berdampak tidak hanya pada korban langsung, tetapi juga pada pelaku, saksi, keluarga, dan komunitas sekolah secara keseluruhan."
+                }
+            },
+            {
+                id: 4,
+                title: "Kartu Situasi 4: Email Mencurigakan",
+                description: "Anda menerima email dari 'bank@bni-support.com' yang meminta Anda untuk mengklik tautan dan memasukkan informasi kartu kredit karena ada masalah keamanan. Apa yang harus Anda lakukan?",
+                options: [
+                    { text: "Segera klik tautan dan ikuti instruksi untuk mengamankan akun", correct: false },
+                    { text: "Hapus email tersebut tanpa membalas", correct: true },
+                    { text: "Balas email untuk meminta penjelasan lebih lanjut", correct: false },
+                    { text: "Hubungi bank melalui nomor telepon resmi untuk memverifikasi", correct: true }
+                ],
+                multiSelect: true,
+                correctCount: 2,
+                feedback: {
+                    correct: "Benar! Email ini menunjukkan ciri-ciri phishing: alamat email mencurigakan, permintaan informasi sensitif, dan rasa urgensi. Tindakan terbaik adalah menghapus email dan menghubungi bank melalui saluran resmi.",
+                    incorrect: "Salah. Email ini menunjukkan ciri-ciri phishing. Jangan pernah mengklik tautan atau membalas email semacam ini. Selalu verifikasi melalui saluran resmi."
+                }
+            }
+        ];
+
+        // Data for quiz
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "Apa yang dimaksud dengan literasi digital?",
+                options: [
+                    "Kemampuan menggunakan perangkat teknologi",
+                    "Kemampuan untuk menemukan, mengevaluasi, menggunakan, dan membuat informasi menggunakan teknologi digital",
+                    "Kemampuan membuat konten media sosial",
+                    "Kemampuan memprogram komputer"
+                ],
+                correct: 1
+            },
+            {
+                id: 2,
+                question: "Manakah dari berikut ini yang BUKAN merupakan bentuk cyberbullying?",
+                options: [
+                    "Mengirim pesan ancaman melalui WhatsApp",
+                    "Membuat akun palsu untuk mengolok-olok seseorang",
+                    "Mengunggah foto bersama teman dengan persetujuan semua orang",
+                    "Menyebarkan rumor tentang seseorang di media sosial"
+                ],
+                correct: 2
+            },
+            {
+                id: 3,
+                question: "Apa yang harus dilakukan jika menerima email yang mencurigakan?",
+                options: [
+                    "Klik tautan untuk melihat isinya",
+                    "Balas email untuk meminta penjelasan",
+                    "Hapus email dan jangan membagikan informasi pribadi",
+                    "Teruskan email ke teman untuk meminta pendapat"
+                ],
+                correct: 2
+            },
+            {
+                id: 4,
+                question: "Manakah dari berikut ini yang merupakan ciri-ciri informasi hoax?",
+                options: [
+                    "Sumber informasi jelas dan terpercaya",
+                    "Menggunakan judul yang sensasional dan provokatif",
+                    "Ditulis dengan bahasa yang objektif dan netral",
+                    "Menyertakan data dan fakta yang dapat diverifikasi"
+                ],
+                correct: 1
+            },
+            {
+                id: 5,
+                question: "Apa yang dimaksud dengan etika digital?",
+                options: [
+                    "Aturan tentang cara menggunakan perangkat digital",
+                    "Prinsip moral yang mengatur perilaku dalam menggunakan teknologi digital",
+                    "Cara membuat konten digital yang menarik",
+                    "Teknik untuk meningkatkan keamanan digital"
+                ],
+                correct: 1
+            }
+        ];
+
+        // Global variables
+        let currentScenarioIndex = 0;
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let completedSections = {
+            hoax: false,
+            cyberbullying: false,
+            phishing: false,
+            etika: false
+        };
+
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        navLinks.classList.remove('active');
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Tab functionality
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab and content
+                    this.classList.add('active');
+                    document.getElementById(`${tabId}-content`).classList.add('active');
+                });
+            });
+            
+            // Mark as complete buttons
+            document.querySelectorAll('.mark-complete').forEach(button => {
+                button.addEventListener('click', function() {
+                    const section = this.getAttribute('data-section');
+                    completedSections[section] = true;
+                    updateProgress();
+                    this.textContent = '✓ Sudah Dipelajari';
+                    this.disabled = true;
+                    this.style.backgroundColor = '#2ecc71';
+                });
+            });
+            
+            // Initialize scenarios
+            loadScenario(currentScenarioIndex);
+            
+            // Scenario navigation
+            document.getElementById('next-scenario').addEventListener('click', function() {
+                currentScenarioIndex = (currentScenarioIndex + 1) % scenarios.length;
+                loadScenario(currentScenarioIndex);
+            });
+            
+            document.getElementById('reset-scenarios').addEventListener('click', function() {
+                currentScenarioIndex = 0;
+                loadScenario(currentScenarioIndex);
+            });
+            
+            // Initialize quiz
+            loadQuizQuestion(currentQuizIndex);
+            
+            // Quiz navigation
+            document.getElementById('submit-quiz').addEventListener('click', submitQuiz);
+            document.getElementById('reset-quiz').addEventListener('click', resetQuiz);
+            
+            // Download guide button
+            document.getElementById('download-guide').addEventListener('click', function() {
+                alert('Panduan diskusi akan diunduh. Fitur ini akan terhubung ke server di implementasi lengkap.');
+            });
+            
+            // Submit discussion button
+            document.getElementById('submit-discussion').addEventListener('click', function() {
+                alert('Hasil diskusi berhasil dikirim. Fitur ini akan terhubung ke server di implementasi lengkap.');
+            });
+            
+            // View rubric button
+            document.getElementById('view-rubric').addEventListener('click', function() {
+                alert('Rubrik penilaian akan ditampilkan. Fitur ini akan terhubung ke server di implementasi lengkap.');
+            });
+            
+            // Reflection form
+            document.getElementById('reflection-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Refleksi berhasil dikirim. Terima kasih telah berpartisipasi!');
+            });
+            
+            // Update progress initially
+            updateProgress();
+        });
+
+        // Function to load scenario
+        function loadScenario(index) {
+            const scenario = scenarios[index];
+            const container = document.getElementById('scenario-container');
+            
+            let optionsHTML = '';
+            scenario.options.forEach((option, i) => {
+                optionsHTML += `
+                    <div class="option" data-correct="${option.correct}">
+                        ${option.text}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = `
+                <div class="scenario-card">
+                    <h4>${scenario.title}</h4>
+                    <p>${scenario.description}</p>
+                    <div class="options">
+                        ${optionsHTML}
+                    </div>
+                    <div class="feedback" id="scenario-feedback"></div>
+                </div>
+            `;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const isCorrect = this.getAttribute('data-correct') === 'true';
+                    const feedback = document.getElementById('scenario-feedback');
+                    
+                    // Remove previous selections
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Mark this option
+                    this.classList.add(isCorrect ? 'correct' : 'incorrect');
+                    
+                    // Show feedback
+                    feedback.textContent = isCorrect ? scenario.feedback.correct : scenario.feedback.incorrect;
+                    feedback.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    feedback.style.display = 'block';
+                });
+            });
+        }
+
+        // Function to load quiz question
+        function loadQuizQuestion(index) {
+            const question = quizQuestions[index];
+            const container = document.getElementById('quiz-container');
+            
+            let optionsHTML = '';
+            question.options.forEach((option, i) => {
+                optionsHTML += `
+                    <div class="option" data-index="${i}">
+                        ${option}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = `
+                <div class="scenario-card">
+                    <h4>Pertanyaan ${index + 1} dari ${quizQuestions.length}</h4>
+                    <p>${question.question}</p>
+                    <div class="options">
+                        ${optionsHTML}
+                    </div>
+                    <div class="feedback" id="quiz-feedback"></div>
+                </div>
+            `;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedIndex = parseInt(this.getAttribute('data-index'));
+                    const isCorrect = selectedIndex === question.correct;
+                    const feedback = document.getElementById('quiz-feedback');
+                    
+                    // Remove previous selections
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Mark this option
+                    this.classList.add(isCorrect ? 'correct' : 'incorrect');
+                    
+                    // Mark correct answer if wrong
+                    if (!isCorrect) {
+                        document.querySelector(`.option[data-index="${question.correct}"]`).classList.add('correct');
+                    }
+                    
+                    // Show feedback
+                    feedback.textContent = isCorrect ? 'Jawaban Anda benar!' : 'Jawaban Anda salah. Silakan coba lagi.';
+                    feedback.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                    feedback.style.display = 'block';
+                    
+                    // Update score if correct
+                    if (isCorrect) {
+                        quizScore++;
+                    }
+                });
+            });
+        }
+
+        // Function to submit quiz
+        function submitQuiz() {
+            const resultContainer = document.getElementById('quiz-result');
+            const scoreText = document.getElementById('score-text');
+            const feedbackText = document.getElementById('feedback-text');
+            
+            scoreText.textContent = `Skor Anda: ${quizScore}/${quizQuestions.length}`;
+            
+            if (quizScore === quizQuestions.length) {
+                feedbackText.textContent = 'Sempurna! Anda telah menguasai materi literasi digital.';
+                feedbackText.style.color = '#2ecc71';
+            } else if (quizScore >= quizQuestions.length * 0.7) {
+                feedbackText.textContent = 'Bagus! Pemahaman Anda tentang literasi digital sudah baik.';
+                feedbackText.style.color = '#3498db';
+            } else {
+                feedbackText.textContent = 'Anda perlu mempelajari kembali materi literasi digital.';
+                feedbackText.style.color = '#e74c3c';
+            }
+            
+            resultContainer.classList.remove('hidden');
+        }
+
+        // Function to reset quiz
+        function resetQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            loadQuizQuestion(currentQuizIndex);
+            document.getElementById('quiz-result').classList.add('hidden');
+        }
+
+        // Function to update progress
+        function updateProgress() {
+            const completedCount = Object.values(completedSections).filter(Boolean).length;
+            const totalSections = Object.keys(completedSections).length;
+            const progressPercentage = (completedCount / totalSections) * 100;
+            
+            document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
+            document.getElementById('progress-text').textContent = `${Math.round(progressPercentage)}%`;
+        }
+    </script>
 </body>
 </html>
